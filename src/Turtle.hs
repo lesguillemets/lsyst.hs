@@ -37,6 +37,8 @@ data Command = Jump Double
              | Turn Double
              | JumpTo (Double, Double)
              | DrawTo (Double, Double)
+             | SetAng Double
+             | SetState ((Double, Double), Double)
 
 -- TODO :: Better abstraction
 execCommands :: Turtle -> [Command] -> [Picture]
@@ -57,3 +59,5 @@ simTurtle !t@(Turtle{..}) s (cFunc:cs) = let (c, nextState) = cFunc t s in
         (JumpTo d) -> simTurtle (t{_loc = d}) nextState cs
         (DrawTo d) -> (color white . line . map floatise $ [_loc,d]):
                             simTurtle (t{_loc=d}) nextState cs
+        (SetAng ang) -> simTurtle (t{_dir = ang}) nextState cs
+        (SetState (loc,ang)) -> simTurtle (t{_dir=ang, _loc=loc}) nextState cs

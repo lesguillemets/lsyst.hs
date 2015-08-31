@@ -24,16 +24,16 @@ pyDraw = turtleSimlate "Pyt" (Turtle (0,0) 0) [] . concatMap toCommands
 toCommands :: Char -> [Turtle -> Stack -> (Command, Stack)]
 toCommands '0' = return $ \ _ s -> (Draw leafLength, s)
 toCommands '1' = return $ \ _ s -> (Draw baseLength, s)
-toCommands '[' = return $ \t s -> (Turn (4/pi), _loc t:s)
+toCommands '[' = return $ \t s -> (Turn (4/pi), (_loc t,_dir t):s)
 toCommands ']' = [
-                 \_ s -> (Turn (-4/pi), s),
-                 \t s -> (JumpTo (head s), tail s)
+                 \t s -> (SetState (head s), tail s),
+                 \_ s -> (Turn (-4/pi), s)
                  ]
 -- toCommands '1' = \ _ s return $ (Draw baseLength, s))
 -- toCommands '[' = \ t s return $ (Turn (4/pi), (_loc t:s)))
 -- toCommands ']' = \ t s [(Turn (-4/pi), s), (JumpTo (head s), tail s)])
 
-type Stack = [(Double,Double)]
+type Stack = [((Double,Double), Double)]
 leafLength :: Double
 leafLength = 10
 baseLength :: Double
