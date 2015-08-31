@@ -39,6 +39,7 @@ data Command = Jump Double
              | DrawTo (Double, Double)
              | SetAng Double
              | SetState ((Double, Double), Double)
+             | Stay
 
 -- TODO :: Better abstraction
 execCommands :: Turtle -> [Command] -> [Picture]
@@ -61,3 +62,4 @@ simTurtle !t@(Turtle{..}) s (cFunc:cs) = let (c, nextState) = cFunc t s in
                             simTurtle (t{_loc=d}) nextState cs
         (SetAng ang) -> simTurtle (t{_dir = ang}) nextState cs
         (SetState (loc,ang)) -> simTurtle (t{_dir=ang, _loc=loc}) nextState cs
+        Stay -> simTurtle t nextState cs
