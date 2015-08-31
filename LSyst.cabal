@@ -21,6 +21,7 @@ library
                      , LSys.LSys
                      , LSys.PythagorasTree
                      , LSys.Koch
+                     , LSys.Plant
                      , Turtle
   -- other-modules:       
   -- other-extensions:    
@@ -42,4 +43,8 @@ executable koch
   build-depends:       base >=4.8
                      , LSys
 
-
+executable plant
+  hs-source-dirs:      examples
+  main-is:             plant.hs
+  build-depends:       base >=4.8
+                     , LSys
