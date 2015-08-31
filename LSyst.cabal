@@ -20,6 +20,7 @@ library
   exposed-modules:     LSys
                      , LSys.LSys
                      , LSys.PythagorasTree
+                     , LSys.Koch
                      , Turtle
   -- other-modules:       
   -- other-extensions:    
@@ -34,4 +35,11 @@ executable pythagoras
   main-is:             pythagoras.hs
   build-depends:       base >=4.8
                      , LSys
+
+executable koch
+  hs-source-dirs:      examples
+  main-is:             koch.hs
+  build-depends:       base >=4.8
+                     , LSys
+
 
