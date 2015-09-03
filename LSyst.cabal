@@ -23,6 +23,7 @@ library
                      , LSys.Koch
                      , LSys.Plant
                      , LSys.Sierpinski
+                     , LSys.Dragon
                      , Turtle
   -- other-modules:       
   -- other-extensions:    
@@ -52,5 +53,10 @@ executable plant
 executable sierpinski
   hs-source-dirs:      examples
   main-is:             sierpinski.hs
+  build-depends:       base >=4.8
+                     , LSys
+executable dragon
+  hs-source-dirs:      examples
+  main-is:             dragon.hs
   build-depends:       base >=4.8
                      , LSys
