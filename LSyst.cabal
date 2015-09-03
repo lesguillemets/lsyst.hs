@@ -22,6 +22,7 @@ library
                      , LSys.PythagorasTree
                      , LSys.Koch
                      , LSys.Plant
+                     , LSys.Sierpinski
                      , Turtle
   -- other-modules:       
   -- other-extensions:    
@@ -46,5 +47,10 @@ executable koch
 executable plant
   hs-source-dirs:      examples
   main-is:             plant.hs
+  build-depends:       base >=4.8
+                     , LSys
+executable sierpinski
+  hs-source-dirs:      examples
+  main-is:             sierpinski.hs
   build-depends:       base >=4.8
                      , LSys
